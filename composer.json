@@ -1,0 +1,16 @@
+{
+  "name": "jamesborg2012/laravel-example-package",
+  "description": "An example of how to create a simple package for Laravel 10 using Composer",
+  "autoload": {
+    "psr-4": {
+      "Jamesborg2012\\LaravelExamplePackage\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "James Borg",
+      "email": "contact@jamesborg.me"
+    }
+  ],
+  "require": {}
+}
