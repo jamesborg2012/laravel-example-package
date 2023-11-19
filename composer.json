@@ -12,5 +12,12 @@
       "email": "contact@jamesborg.me"
     }
   ],
-  "require": {}
+  "require": {},
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Jamesborg2012\\LaravelExamplePackage\\Providers\\ExamplePackageProvider"
+      ]
+    }
+  }
 }
