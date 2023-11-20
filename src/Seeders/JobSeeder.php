@@ -2,9 +2,10 @@
 
 namespace Jamesborg2012\LaravelExamplePackage\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class JobSeeder extends Seeder
 {
@@ -13,21 +14,14 @@ class JobSeeder extends Seeder
      */
     public function run(): void
     {
-        $jobs_list = [
-            [
-                'name' => 'Software Developer',
-                'salary' => '50000'
-            ],
-            [
-                'name' => 'Teacher',
-                'salary' => '20000'
-            ]
-        ];
+        $jobs = json_decode(File::get(base_path('public\jamesborg2012\laravel-example-package\jobs.json')), true);
 
-        foreach ($jobs_list as $job) {
+        foreach ($jobs as $job) {
+            $salary = rand(20000, 100000);
+
             DB::table('jobs')->insert([
                 'name' => $job['name'],
-                'salary' => $job['salary']
+                'salary' => $salary
             ]);
         }
     }
