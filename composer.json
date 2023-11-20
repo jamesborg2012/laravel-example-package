@@ -17,7 +17,8 @@
     "laravel": {
       "providers": [
         "Jamesborg2012\\LaravelExamplePackage\\Providers\\ExamplePackageProvider"
-      ]
+      ],
+      "seeder-path": "Seeders"
     }
   }
 }
