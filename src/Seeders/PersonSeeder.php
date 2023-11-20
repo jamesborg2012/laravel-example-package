@@ -5,6 +5,7 @@ namespace Jamesborg2012\LaravelExamplePackage\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class PersonSeeder extends Seeder
 {
@@ -13,21 +14,16 @@ class PersonSeeder extends Seeder
      */
     public function run(): void
     {
-        $people_list = [
-            [
-                'name' => 'James',
-                'age' => '27'
-            ],
-            [
-                'name' => 'Thomas',
-                'age' => '21'
-            ]
-        ];
+        $response = Http::get('https://randomuser.me/api/?nat=gb&results=10');
+        $body = $response->object()->results;
 
-        foreach ($people_list as $person) {
+        foreach ($body as $person) {
+            $name = $person->name->first . ' ' . $person->name->last;
+            $age = $person->dob->age;
+
             DB::table('people')->insert([
-                'name' => $person['name'],
-                'age' => $person['age']
+                'name' => $name,
+                'age' => $age
             ]);
         }
     }
