@@ -14,6 +14,9 @@ class ExamplePackageProvider extends ServiceProvider
         //From where to read migrations
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
+        //From where to load Views
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'jamesborg2012');
+
         //Publish assets
         $this->publishes([
             __DIR__ . '/../public' => public_path('jamesborg2012/laravel-example-package')
