@@ -10,7 +10,7 @@ First, you need to update your composer.json to point to the package. Add a repo
 ```
 "repositories": [
         {
-            "type": "vcs"
+            "type": "vcs",
             "url": "https://github.com/jamesborg2012/laravel-example-package"
         }
     ],
