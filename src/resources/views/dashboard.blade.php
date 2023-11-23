@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet"
+        href="{{ asset('jamesborg2012/laravel-example-package/assets/laravel-example-package.css') }}" />
+</head>
+
+<body>
     @foreach ($table as $row)
         <div>
             <h2>Job - {{ $row['name'] }}, Earning €{{ $row['salary'] }}</h2>
@@ -17,3 +26,6 @@
             </table>
         </div>
     @endforeach
+</body>
+
+</html>
