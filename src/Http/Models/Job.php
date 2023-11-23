@@ -16,6 +16,12 @@ class Job extends Model
         'salary'
     ];
 
+    /**
+     * One to Many relationship
+     * One Job has many People
+     *
+     * @return void
+     */
     public function people()
     {
         return $this->hasMany(Person::class);

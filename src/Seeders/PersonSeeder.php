@@ -15,6 +15,10 @@ class PersonSeeder extends Seeder
      */
     public function run(): void
     {
+        /**
+         * This seeder is getting dummy person data from an API and inserting it into the database
+         */
+
         $response = Http::get('https://randomuser.me/api/?nat=gb&results=10');
         $body = $response->object()->results;
 
@@ -24,6 +28,8 @@ class PersonSeeder extends Seeder
         foreach ($body as $person) {
             $name = $person->name->first . ' ' . $person->name->last;
             $age = $person->dob->age;
+
+            //Assign a random job to a person
             $rand_job_id = rand(1, ($jobs_count));
 
             DB::table('people')->insert([

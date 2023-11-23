@@ -17,6 +17,12 @@ class Person extends Model
         'job_id'
     ];
 
+    /**
+     * One to Many Inverse/Belongs To relationship
+     * One Job Belongs To Many People
+     *
+     * @return BelongsTo
+     */
     public function job(): BelongsTo
     {
         return $this->belongsTo(Job::class);

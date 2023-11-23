@@ -3,16 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use Jamesborg2012\LaravelExamplePackage\Http\Controllers\JobController;
 use Jamesborg2012\LaravelExamplePackage\Http\Controllers\PersonController;
-use Jamesborg2012\LaravelExamplePackage\Http\Controllers\TestController;
 use Jamesborg2012\LaravelExamplePackage\Http\Models\Job;
-
-Route::get('test-package/controller', [TestController::class, 'index']);
 
 Route::get('laravel-example-package/person/{id}', [PersonController::class, 'getPerson']);
 Route::get('laravel-example-package/job/{id}', [JobController::class, 'getJob']);
 
+/**
+ * Returns a simple dashboard showing the data seeded
+ */
 Route::get('laravel-example-package/dashboard', function () {
 
+    //Getting all jobs
     $jobs = Job::all('id', 'name', 'salary');
 
     $view_data = [];
@@ -27,6 +28,7 @@ Route::get('laravel-example-package/dashboard', function () {
             'people' => []
         ];
 
+        //Get the people associated with the job through Model
         $people = $job->people;
 
         /**
@@ -42,5 +44,5 @@ Route::get('laravel-example-package/dashboard', function () {
         $view_data[$job->id] = $loop_data;
     }
 
-    return view('jamesborg2012::dashboard', ['table' => $view_data]);
+    return view('laravel-example-package::dashboard', ['table' => $view_data]);
 });

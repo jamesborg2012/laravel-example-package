@@ -14,6 +14,9 @@ class JobSeeder extends Seeder
      */
     public function run(): void
     {
+        /*
+        * This seeder is getting the contents of a JSON file and inserting them into the database
+        */
         $jobs = json_decode(File::get(base_path('public\jamesborg2012\laravel-example-package\jobs.json')), true);
 
         foreach ($jobs as $job) {
